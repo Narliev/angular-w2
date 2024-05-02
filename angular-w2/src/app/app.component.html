@@ -1,0 +1,35 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div *ngIf="showBook">
+  <h3>Title: {{bookList[index].title}}</h3>
+  <h3>Description: {{bookList[index].desc}}</h3>
+  <h3>Author: {{bookList[index].author}}</h3>
+  <h3>Rating: {{bookList[index].rating}}</h3>
+  <h3>Total ratings: {{bookList[index].peopleRated}}</h3>
+  <button (click)="rateBook(1)">1</button>
+  <button (click)="rateBook(2)">2</button>
+  <button (click)="rateBook(3)">3</button>
+  <button (click)="rateBook(4)">4</button>
+  <button (click)="rateBook(5)">5</button>
+</div>
+<div *ngIf="showOptions">
+  <button (click)="optionChoose('again')">Rate again!</button>
+  <button (click)="optionChoose('finish')">Finish rating!</button>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<router-outlet />

@@ -11,16 +11,27 @@
   <h3>Description: {{bookList[index].desc}}</h3>
   <h3>Author: {{bookList[index].author}}</h3>
   <h3>Rating: {{bookList[index].rating}}</h3>
-  <h3>Total ratings: {{bookList[index].peopleRated}}</h3>
-  <button (click)="rateBook(1)">1</button>
-  <button (click)="rateBook(2)">2</button>
-  <button (click)="rateBook(3)">3</button>
-  <button (click)="rateBook(4)">4</button>
-  <button (click)="rateBook(5)">5</button>
+  <h3>Total ratings: {{bookList[index].peopleRated}}</h3><br>
+
+  <div>
+    <input (input)="processInputTitle($event)" type="text" placeholder="Заглавие на книгата">
+    <input (input)="processInputDesc($event)" type="text" placeholder="Описание на книгата">
+    <input (input)="processInputAuthor($event)" type="text" placeholder="Автор на книгата">
+  </div><br>
+
+  <button (click)="rateBook(1)">1&#9733;</button>
+  <button (click)="rateBook(2)">2&#9733;</button>
+  <button (click)="rateBook(3)">3&#9733;</button>
+  <button (click)="rateBook(4)">4&#9733;</button>
+  <button (click)="rateBook(5)">5&#9733;</button>
+
 </div>
 <div *ngIf="showOptions">
   <button (click)="optionChoose('again')">Rate again!</button>
   <button (click)="optionChoose('finish')">Finish rating!</button>
+</div>
+<div *ngIf="endOption">
+  <h1>Rating has been done!</h1>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -30,6 +41,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />

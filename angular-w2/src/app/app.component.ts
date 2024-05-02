@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -14,10 +13,14 @@ export class AppComponent {
   title = 'angular-w2';
   index = 0;
   tempRating = 0;
-  tempPeople = 0;
+
+  tempTitle : any = {value : ''};
+  tempDesc : any = {value : ''};
+  tempAuthor : any = {value : ''};
 
   showBook = true;
   showOptions = false;
+  endOption = false;
 
   public bookList  = 
   [
@@ -57,6 +60,39 @@ export class AppComponent {
       peopleRated: 0
     }
   ];
+
+  public resetTemp()
+  {
+    this.tempTitle.value = '';
+    this.tempDesc.value = '';
+    this.tempAuthor.value = '';
+  }
+
+  public processInputTitle(input : Event) 
+  {
+    this.tempTitle = input.target;
+  }
+
+  public processInputDesc(input : Event) 
+  {
+    this.tempDesc = input.target;
+  }
+
+  public processInputAuthor(input : Event) 
+  {
+    this.tempAuthor = input.target;
+  }
+
+  public processAllInfo()
+  {
+    const tempoTitle = this.tempTitle.value;
+    const tempoDesc = this.tempDesc.value;
+    const tempoAuthor = this.tempAuthor.value;
+    if(this.tempTitle.value !== '') this.bookList[this.index].title = tempoTitle;
+    if(this.tempDesc.value !== '') this.bookList[this.index].desc = tempoDesc;
+    if(this.tempAuthor.value !== '') this.bookList[this.index].author = tempoAuthor;
+  }
+
   public rateBook(num : number)
   {
     if(this.bookList[this.index].rating==0)
@@ -70,6 +106,8 @@ export class AppComponent {
         this.bookList[this.index].peopleRated++;
         this.bookList[this.index].rating=(this.tempRating+num)/this.bookList[this.index].peopleRated;
       }
+      this.processAllInfo();
+      this.resetTemp();
       this.index++;
       if(this.index==this.bookList.length)
         {
@@ -81,9 +119,14 @@ export class AppComponent {
   {
     if(opt == 'again')
       {
-          this.index = 0;
-          this.showBook = true;
-          this.showOptions = false;
+        this.index = 0;
+        this.showBook = true;
+        this.showOptions = false;
+      }
+      if(opt == 'finish')
+      {
+        this.showOptions = false;
+        this.endOption = true;
       }
   }
 }
